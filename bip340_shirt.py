@@ -3,7 +3,7 @@ def schnorr_verify(m, p, s): # msg, pubkey, sig
  hashlib as h; H=lambda x: h.sha256(x).digest()
  P=2**256-2**32-977;T=2*H(b"BIP0340/challenge")
  L=lambda x: (c:=x**3+7,y:=pow(c,1+P//4,P),(x<P
- and not(c-y*y)%P)and(x,-y*(-1)**y%P))[2];C=len
+ and 0==(c-y*y)%P)and(x,-y*(-1)**y%P))[2];C=len
  A=lambda p,q:p or q if not(p and q)else(x:=p[0
  ],y:=p[1],f:=(q[1]-y,3*x**2,q[0]-x,2*y),l:=f[q
  ==p]*pow(f[2+(q==p)],P-2,P),X:=(l*l-x-q[0])%P,
